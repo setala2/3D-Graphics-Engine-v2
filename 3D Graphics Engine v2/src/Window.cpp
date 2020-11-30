@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "Window.h"
-
-#include <iostream>
 
 #ifdef WINDOWLIB_GLFW
 #include <GLFW/glfw3.h>
