@@ -16,7 +16,7 @@ namespace as3d
 	{
 		while (running)
 		{
-
+			window->Update();
 		}
 	}
 
