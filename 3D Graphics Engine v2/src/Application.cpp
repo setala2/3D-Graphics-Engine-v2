@@ -4,6 +4,8 @@ namespace as3d
 {
 	Application::Application()
 	{
+		window = std::make_unique<Window>(WindowProperties{});
+		window->MakeCurrent();
 	}
 
 	Application::~Application()
