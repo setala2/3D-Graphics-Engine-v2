@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Window.h"
+#include "ApplicationEvent.h"
 
 #ifdef WINDOWLIB_GLFW
 #include <GLFW/glfw3.h>
@@ -17,11 +18,13 @@ namespace as3d
 		void MakeCurrent();
 		void Update();
 
-		GLFWwindow* GetWindowPointer();
+		GLFWwindow* GetWindowPointer() const;
+		void SetEventCallback(const std::function<void(Event&)>& callback);
 	private:
 		static uint8_t windowCount;
 		WindowProperties properties;
 		GLFWwindow* glfwPointer;
+		void SetGlfwCallbacks();
 	};
 
 	uint8_t Window::Impl::windowCount = 0;
@@ -32,6 +35,7 @@ namespace as3d
 		glfwSetErrorCallback([](int code, const char* description)
 		{
 			std::cerr << "[GLFW error " << code << "]: " << description << '\n';
+			__debugbreak();
 		});
 
 		if (windowCount++ == 0)
@@ -39,6 +43,7 @@ namespace as3d
 
 		glfwPointer = glfwCreateWindow(props.width, props.height, props.title.c_str(), nullptr, nullptr);
 		glfwSetWindowUserPointer(glfwPointer, &properties);
+		SetGlfwCallbacks();
 	}
 
 	Window::Impl::~Impl()
@@ -58,9 +63,34 @@ namespace as3d
 		glfwSwapBuffers(glfwPointer);
 	}
 
-	GLFWwindow* Window::Impl::GetWindowPointer()
+	GLFWwindow* Window::Impl::GetWindowPointer() const
 	{
 		return glfwPointer;
+	}
+
+	void Window::Impl::SetEventCallback(const std::function<void(Event&)>& callback)
+	{
+		properties.EventCallback = callback;
+	}
+
+	void Window::Impl::SetGlfwCallbacks()
+	{
+		glfwSetWindowCloseCallback(glfwPointer, [](GLFWwindow* window)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			WindowCloseEvent event;
+			props.EventCallback(event);
+		});
+
+		glfwSetWindowSizeCallback(glfwPointer, [](GLFWwindow* window, int width, int height)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			props.width = width;
+			props.height = height;
+
+			WindowResizeEvent event(width, height);
+			props.EventCallback(event);
+		});
 	}
 
 #endif
@@ -82,6 +112,11 @@ namespace as3d
 	void Window::Update()
 	{
 		pImpl->Update();
+	}
+
+	void Window::SetEventCallback(const std::function<void(Event&)>& callback)
+	{
+		pImpl->SetEventCallback(callback);
 	}
 
 	void* Window::GetWindowPointer() const
