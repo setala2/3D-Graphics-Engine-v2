@@ -1,7 +1,9 @@
 #include <iostream>
+#include "Application.h"
 
-int main()
+int main(int argc, char** argv)
 {
-	std::cout << "Hello world\n";
+	as3d::Application app;
+	app.Run();
 	return 0;
 }
