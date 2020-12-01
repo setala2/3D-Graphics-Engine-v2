@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <GL/glew.h>
 #include "Application.h"
+#include "Gldebug.h"
 
 namespace as3d
 {
@@ -15,6 +16,7 @@ namespace as3d
 			std::cerr << "glewInit failed!\n";
 			__debugbreak();
 		}
+		InitDebug();
 	}
 
 	Application::~Application()
