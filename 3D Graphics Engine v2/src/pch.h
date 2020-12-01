@@ -8,3 +8,5 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+
+#include <GL/glew.h> // Probably should put this here

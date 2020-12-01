@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <GL/glew.h>
 #include "Gldebug.h"
 
 namespace as3d
