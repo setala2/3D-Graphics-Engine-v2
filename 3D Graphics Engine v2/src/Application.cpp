@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Application.h"
 #include "Gldebug.h"
+#include "VertexArray.h"
 
 namespace as3d
 {
@@ -24,6 +25,15 @@ namespace as3d
 
 	void Application::Run()
 	{
+		// Making sure it doesn't instantly crash
+		float test[]{ 1.0f, 2.0f, 3.0f, 4.0f };
+		BufferLayout layout;
+		layout.Push<float>(2);
+		layout.Push<float>(2);
+		VertexBuffer vbo(test, sizeof(test));
+		VertexArray vao;
+		vao.AddBuffer(vbo, layout);
+
 		while (running)
 		{
 			window->Update();
