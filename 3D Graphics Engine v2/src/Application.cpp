@@ -26,9 +26,8 @@ namespace as3d
 	void Application::Run()
 	{
 		// Making sure it doesn't instantly crash
-		float test[]{ 1.0f, 2.0f, 3.0f, 4.0f };
+		float test[]{ -0.75f, -0.5f, 0.75f, -0.5f, 0.0f, 0.75f };
 		BufferLayout layout;
-		layout.Push<float>(2);
 		layout.Push<float>(2);
 		VertexBuffer vbo(test, sizeof(test));
 		VertexArray vao;
@@ -36,6 +35,9 @@ namespace as3d
 
 		while (running)
 		{
+			glClear(GL_COLOR_BUFFER_BIT);
+			vao.Bind();
+			glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
 		}
 	}
