@@ -29,13 +29,14 @@ namespace as3d
 	{
 		float test[]
 		{
-			-0.75f, -0.5f,
-			0.75f, -0.5f,
-			0.0f, 0.75f
+			-0.75f, -0.5f, 1.0f, 0.0f, 0.0f,
+			0.75f, -0.5f, 0.0f, 1.0f, 0.0f,
+			0.0f, 0.75f, 0.0f, 0.0f, 1.0f
 		};
 		
 		BufferLayout layout;
 		layout.Push<float>(2);
+		layout.Push<float>(3);
 		VertexBuffer vbo(test, sizeof(test));
 		VertexArray vao;
 		vao.AddBuffer(vbo, layout);
