@@ -111,6 +111,7 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationEvent.h" />
     <ClInclude Include="src\Event.h" />
+    <ClInclude Include="src\Keycodes.h" />
     <ClInclude Include="src\MouseEvent.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Window.h" />

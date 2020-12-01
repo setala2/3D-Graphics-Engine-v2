@@ -99,6 +99,13 @@ namespace as3d
 			MouseMoveEvent event(x, y);
 			props.EventCallback(event);
 		});
+
+		glfwSetMouseButtonCallback(glfwPointer, [](GLFWwindow* window, int button, int action, int modifiers)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			MouseButtonEvent event(button, action, modifiers);
+			props.EventCallback(event);
+		});
 	}
 
 #endif
