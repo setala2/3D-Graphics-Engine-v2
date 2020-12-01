@@ -4,6 +4,7 @@
 
 #include "Window.h"
 #include "Event.h"
+#include "Renderer.h"
 
 int main(int argc, char** argv);
 
@@ -27,6 +28,7 @@ namespace as3d
 	private:
 		bool running = true;
 		std::unique_ptr<Window> window;
+		Renderer renderer;
 
 		void OnWindowClose(Event& event);
 		void OnWindowResize(Event& event);

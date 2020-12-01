@@ -16,6 +16,7 @@ namespace as3d
 			std::cerr << "glewInit failed!\n";
 			__debugbreak();
 		}
+
 		InitDebug();
 	}
 
@@ -25,17 +26,24 @@ namespace as3d
 
 	void Application::Run()
 	{
-		// Making sure it doesn't instantly crash
-		float test[]{ -0.75f, -0.5f, 0.75f, -0.5f, 0.0f, 0.75f };
+		float test[]
+		{
+			-0.75f, -0.5f,
+			0.75f, -0.5f,
+			0.0f, 0.75f
+		};
+		
 		BufferLayout layout;
 		layout.Push<float>(2);
 		VertexBuffer vbo(test, sizeof(test));
 		VertexArray vao;
 		vao.AddBuffer(vbo, layout);
 
+		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
+
 		while (running)
 		{
-			glClear(GL_COLOR_BUFFER_BIT);
+			renderer.Clear();
 			vao.Bind();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
