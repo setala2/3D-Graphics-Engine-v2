@@ -106,6 +106,13 @@ namespace as3d
 			MouseButtonEvent event(button, action, modifiers);
 			props.EventCallback(event);
 		});
+
+		glfwSetScrollCallback(glfwPointer, [](GLFWwindow* window, double xoffset, double yoffset)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			MouseScrollEvent event(xoffset, yoffset);
+			props.EventCallback(event);
+		});
 	}
 
 #endif

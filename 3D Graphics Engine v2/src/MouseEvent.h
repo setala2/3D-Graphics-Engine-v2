@@ -33,4 +33,19 @@ namespace as3d
 		int32_t action;
 		int32_t modifiers;
 	};
+
+	class MouseScrollEvent : public Event
+	{
+	public:
+		MouseScrollEvent(double x, double y);
+
+		EVENT_TYPE(MouseScrollEvent);
+
+		double GetXOffset() const { return xOffset; }
+		double GetYOffset() const { return yOffset; }
+		virtual std::string ToString() const override;
+
+	private:
+		double xOffset, yOffset;
+	};
 }

@@ -27,4 +27,15 @@ namespace as3d
 			"Action " << action;
 		return ss.str();
 	}
+
+	MouseScrollEvent::MouseScrollEvent(double x, double y)
+		:xOffset(x), yOffset(y)
+	{	}
+
+	std::string MouseScrollEvent::ToString() const
+	{
+		std::stringstream ss;
+		ss << "Mouse scroll event: " << xOffset << ", " << yOffset;
+		return ss.str();
+	}
 }

@@ -30,6 +30,5 @@ namespace as3d
 
 		void OnWindowClose(Event& event);
 		void OnWindowResize(Event& event);
-		void OnMouseMove(Event& event);
 	};
 }
