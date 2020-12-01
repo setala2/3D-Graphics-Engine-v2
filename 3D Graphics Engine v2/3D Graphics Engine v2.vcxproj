@@ -98,6 +98,7 @@
     <ClCompile Include="src\ApplicationEvent.cpp" />
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MouseEvent.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
@@ -110,8 +111,12 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationEvent.h" />
     <ClInclude Include="src\Event.h" />
+    <ClInclude Include="src\MouseEvent.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

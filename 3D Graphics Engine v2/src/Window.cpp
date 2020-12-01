@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Window.h"
 #include "ApplicationEvent.h"
+#include "MouseEvent.h"
 
 #ifdef WINDOWLIB_GLFW
 #include <GLFW/glfw3.h>
@@ -89,6 +90,13 @@ namespace as3d
 			props.height = height;
 
 			WindowResizeEvent event(width, height);
+			props.EventCallback(event);
+		});
+
+		glfwSetCursorPosCallback(glfwPointer, [](GLFWwindow* window, double x, double y)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			MouseMoveEvent event(x, y);
 			props.EventCallback(event);
 		});
 	}

@@ -11,7 +11,7 @@ namespace as3d
 {
 	enum class EventType
 	{
-		WindowCloseEvent, WindowResizeEvent
+		WindowCloseEvent, WindowResizeEvent, MouseMoveEvent, MouseButtonEvent, MouseScrollEvent
 	};
 
 	class Event
