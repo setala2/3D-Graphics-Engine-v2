@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Gldebug.h"
 #include "VertexArray.h"
+#include "Shader.h"
 
 namespace as3d
 {
@@ -38,6 +39,9 @@ namespace as3d
 		VertexBuffer vbo(test, sizeof(test));
 		VertexArray vao;
 		vao.AddBuffer(vbo, layout);
+
+		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
+		shader.Bind();
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 

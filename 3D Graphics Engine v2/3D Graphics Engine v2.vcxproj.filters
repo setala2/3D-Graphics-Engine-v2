@@ -51,6 +51,9 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -89,11 +92,13 @@
     <ClInclude Include="src\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\shaders\test.txt" />
+    <None Include="src\shaders\vertex.glsl" />
+    <None Include="src\shaders\fragment.glsl" />
   </ItemGroup>
 </Project>
