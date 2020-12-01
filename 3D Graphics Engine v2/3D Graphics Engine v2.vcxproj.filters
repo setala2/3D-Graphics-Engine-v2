@@ -39,6 +39,9 @@
     <ClCompile Include="src\Gldebug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\FileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -65,8 +68,14 @@
     <ClInclude Include="src\Gldebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\FileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\shaders\test.txt" />
   </ItemGroup>
 </Project>
