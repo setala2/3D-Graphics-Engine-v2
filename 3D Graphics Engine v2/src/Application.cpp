@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <GL/glew.h>
 #include "Application.h"
 
 namespace as3d
@@ -8,6 +9,12 @@ namespace as3d
 		window = std::make_unique<Window>(WindowProperties{});
 		window->MakeCurrent();
 		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+
+		if (glewInit() != GLEW_OK)
+		{
+			std::cerr << "glewInit failed!\n";
+			__debugbreak();
+		}
 	}
 
 	Application::~Application()
