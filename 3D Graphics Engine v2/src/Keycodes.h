@@ -2,209 +2,169 @@
 
 // Taken from glfw3.h
 
-/////////////////////////////////////////////
-// Keys        //////////////////////////////
-/////////////////////////////////////////////
+namespace as3d
+{
+	/////////////////////////////////////////////
+	// Keys        //////////////////////////////
+	/////////////////////////////////////////////
+	enum class Keycode
+	{
+		/* The unknown key */
+		Unknown = -1,
 
-/* The unknown key */
-#define KEY_UNKNOWN            -1
+		/* Printable keys */
+		Space = 32,
+		Apostrophe = 39,  /* ' */
+		Comma = 44,  /* , */
+		Minus = 45,  /* - */
+		Period = 46,  /* . */
+		Slash = 47,  /* / */
+		Zero = 48,
+		One = 49,
+		Two = 50,
+		Three = 51,
+		Four = 52,
+		Five = 53,
+		Six = 54,
+		Seven = 55,
+		Eight = 56,
+		Nine = 57,
+		Semicolon = 59,  /* ; */
+		Equal = 61,  /* = */
+		A = 65,
+		B = 66,
+		C = 67,
+		D = 68,
+		E = 69,
+		F = 70,
+		G = 71,
+		H = 72,
+		I = 73,
+		J = 74,
+		K = 75,
+		L = 76,
+		M = 77,
+		N = 78,
+		O = 79,
+		P = 80,
+		Q = 81,
+		R = 82,
+		S = 83,
+		T = 84,
+		U = 85,
+		V = 86,
+		W = 87,
+		X = 88,
+		Y = 89,
+		Z = 90,
+		Left_bracket = 91,  /* [ */
+		Backslash = 92,  /* \ */
+		Right_bracket = 93,  /* ] */
+		Grave_accent = 96,  /* ` */
+		World_1 = 161, /* non-US #1 */
+		World_2 = 162, /* non-US #2 */
 
-/* Printable keys */
-#define KEY_SPACE              32
-#define KEY_APOSTROPHE         39  /* ' */
-#define KEY_COMMA              44  /* , */
-#define KEY_MINUS              45  /* - */
-#define KEY_PERIOD             46  /* . */
-#define KEY_SLASH              47  /* / */
-#define KEY_0                  48
-#define KEY_1                  49
-#define KEY_2                  50
-#define KEY_3                  51
-#define KEY_4                  52
-#define KEY_5                  53
-#define KEY_6                  54
-#define KEY_7                  55
-#define KEY_8                  56
-#define KEY_9                  57
-#define KEY_SEMICOLON          59  /* ; */
-#define KEY_EQUAL              61  /* = */
-#define KEY_A                  65
-#define KEY_B                  66
-#define KEY_C                  67
-#define KEY_D                  68
-#define KEY_E                  69
-#define KEY_F                  70
-#define KEY_G                  71
-#define KEY_H                  72
-#define KEY_I                  73
-#define KEY_J                  74
-#define KEY_K                  75
-#define KEY_L                  76
-#define KEY_M                  77
-#define KEY_N                  78
-#define KEY_O                  79
-#define KEY_P                  80
-#define KEY_Q                  81
-#define KEY_R                  82
-#define KEY_S                  83
-#define KEY_T                  84
-#define KEY_U                  85
-#define KEY_V                  86
-#define KEY_W                  87
-#define KEY_X                  88
-#define KEY_Y                  89
-#define KEY_Z                  90
-#define KEY_LEFT_BRACKET       91  /* [ */
-#define KEY_BACKSLASH          92  /* \ */
-#define KEY_RIGHT_BRACKET      93  /* ] */
-#define KEY_GRAVE_ACCENT       96  /* ` */
-#define KEY_WORLD_1            161 /* non-US #1 */
-#define KEY_WORLD_2            162 /* non-US #2 */
+		/* Function keys */
+		Escape = 256,
+		Enter = 257,
+		Tab = 258,
+		Backspace = 259,
+		Insert = 260,
+		Del = 261,
+		Right = 262,
+		Left = 263,
+		Down = 264,
+		Up = 265,
+		Page_up = 266,
+		Page_down = 267,
+		Home = 268,
+		End = 269,
+		Caps_lock = 280,
+		Scroll_lock = 281,
+		Num_lock = 282,
+		Print_screen = 283,
+		Pause = 284,
+		F1 = 290,
+		F2 = 291,
+		F3 = 292,
+		F4 = 293,
+		F5 = 294,
+		F6 = 295,
+		F7 = 296,
+		F8 = 297,
+		F9 = 298,
+		F10 = 299,
+		F11 = 300,
+		F12 = 301,
+		F13 = 302,
+		F14 = 303,
+		F15 = 304,
+		F16 = 305,
+		F17 = 306,
+		F18 = 307,
+		F19 = 308,
+		F20 = 309,
+		F21 = 310,
+		F22 = 311,
+		F23 = 312,
+		F24 = 313,
+		F25 = 314,
+		Kp_0 = 320,
+		Kp_1 = 321,
+		Kp_2 = 322,
+		Kp_3 = 323,
+		Kp_4 = 324,
+		Kp_5 = 325,
+		Kp_6 = 326,
+		Kp_7 = 327,
+		Kp_8 = 328,
+		Kp_9 = 329,
+		Kp_decimal = 330,
+		Kp_divide = 331,
+		Kp_multiply = 332,
+		Kp_subtract = 333,
+		Kp_add = 334,
+		Kp_enter = 335,
+		Kp_equal = 336,
+		Left_shift = 340,
+		Left_control = 341,
+		Left_alt = 342,
+		Left_super = 343,
+		Right_shift = 344,
+		Right_control = 345,
+		Right_alt = 346,
+		Right_super = 347,
+		Menu = 348
+	};
 
-/* Function keys */
-#define KEY_ESCAPE             256
-#define KEY_ENTER              257
-#define KEY_TAB                258
-#define KEY_BACKSPACE          259
-#define KEY_INSERT             260
-#define KEY_DELETE             261
-#define KEY_RIGHT              262
-#define KEY_LEFT               263
-#define KEY_DOWN               264
-#define KEY_UP                 265
-#define KEY_PAGE_UP            266
-#define KEY_PAGE_DOWN          267
-#define KEY_HOME               268
-#define KEY_END                269
-#define KEY_CAPS_LOCK          280
-#define KEY_SCROLL_LOCK        281
-#define KEY_NUM_LOCK           282
-#define KEY_PRINT_SCREEN       283
-#define KEY_PAUSE              284
-#define KEY_F1                 290
-#define KEY_F2                 291
-#define KEY_F3                 292
-#define KEY_F4                 293
-#define KEY_F5                 294
-#define KEY_F6                 295
-#define KEY_F7                 296
-#define KEY_F8                 297
-#define KEY_F9                 298
-#define KEY_F10                299
-#define KEY_F11                300
-#define KEY_F12                301
-#define KEY_F13                302
-#define KEY_F14                303
-#define KEY_F15                304
-#define KEY_F16                305
-#define KEY_F17                306
-#define KEY_F18                307
-#define KEY_F19                308
-#define KEY_F20                309
-#define KEY_F21                310
-#define KEY_F22                311
-#define KEY_F23                312
-#define KEY_F24                313
-#define KEY_F25                314
-#define KEY_KP_0               320
-#define KEY_KP_1               321
-#define KEY_KP_2               322
-#define KEY_KP_3               323
-#define KEY_KP_4               324
-#define KEY_KP_5               325
-#define KEY_KP_6               326
-#define KEY_KP_7               327
-#define KEY_KP_8               328
-#define KEY_KP_9               329
-#define KEY_KP_DECIMAL         330
-#define KEY_KP_DIVIDE          331
-#define KEY_KP_MULTIPLY        332
-#define KEY_KP_SUBTRACT        333
-#define KEY_KP_ADD             334
-#define KEY_KP_ENTER           335
-#define KEY_KP_EQUAL           336
-#define KEY_LEFT_SHIFT         340
-#define KEY_LEFT_CONTROL       341
-#define KEY_LEFT_ALT           342
-#define KEY_LEFT_SUPER         343
-#define KEY_RIGHT_SHIFT        344
-#define KEY_RIGHT_CONTROL      345
-#define KEY_RIGHT_ALT          346
-#define KEY_RIGHT_SUPER        347
-#define KEY_MENU               348
+	/////////////////////////////////////////////
+	// Mouse       //////////////////////////////
+	/////////////////////////////////////////////
+	enum class Mousecode
+	{
+		Left = 0,
+		Right = 1,
+		Middle = 2,
+		Button_4 = 3,
+		Button_5 = 4,
+		Button_6 = 5,
+		Button_7 = 6,
+		Button_8 = 7
+	};
 
-#define KEY_LAST               KEY_MENU
+	/////////////////////////////////////////////
+	// Actions     //////////////////////////////
+	/////////////////////////////////////////////
+	enum class Action
+	{
+		Release = 0,
+		Press = 1,
+		Repeat = 2
+	};
 
-/////////////////////////////////////////////
-// Modifiers   //////////////////////////////
-/////////////////////////////////////////////
-
-/*! @brief If this bit is set one or more Shift keys were held down.
- *
- *  If this bit is set one or more Shift keys were held down.
- */
-#define MOD_SHIFT           0x0001
- /*! @brief If this bit is set one or more Control keys were held down.
-  *
-  *  If this bit is set one or more Control keys were held down.
-  */
-#define MOD_CONTROL         0x0002
-  /*! @brief If this bit is set one or more Alt keys were held down.
-   *
-   *  If this bit is set one or more Alt keys were held down.
-   */
-#define MOD_ALT             0x0004
-   /*! @brief If this bit is set one or more Super keys were held down.
-	*
-	*  If this bit is set one or more Super keys were held down.
-	*/
-#define MOD_SUPER           0x0008
-	/*! @brief If this bit is set the Caps Lock key is enabled.
-	 *
-	 *  If this bit is set the Caps Lock key is enabled and the @ref
-	 *  LOCK_KEY_MODS input mode is set.
-	 */
-#define MOD_CAPS_LOCK       0x0010
-	 /*! @brief If this bit is set the Num Lock key is enabled.
-	  *
-	  *  If this bit is set the Num Lock key is enabled and the @ref
-	  *  LOCK_KEY_MODS input mode is set.
-	  */
-#define MOD_NUM_LOCK        0x0020
-
-/////////////////////////////////////////////
-// Mouse       //////////////////////////////
-/////////////////////////////////////////////
-
-#define MOUSE_BUTTON_1         0
-#define MOUSE_BUTTON_2         1
-#define MOUSE_BUTTON_3         2
-#define MOUSE_BUTTON_4         3
-#define MOUSE_BUTTON_5         4
-#define MOUSE_BUTTON_6         5
-#define MOUSE_BUTTON_7         6
-#define MOUSE_BUTTON_8         7
-#define MOUSE_BUTTON_LAST      MOUSE_BUTTON_8
-#define MOUSE_BUTTON_LEFT      MOUSE_BUTTON_1
-#define MOUSE_BUTTON_RIGHT     MOUSE_BUTTON_2
-#define MOUSE_BUTTON_MIDDLE    MOUSE_BUTTON_3
-
-/////////////////////////////////////////////
-// Actions     //////////////////////////////
-/////////////////////////////////////////////
-
-#define RELEASE                0
-/*! @brief The key or mouse button was pressed.
- *
- *  The key or mouse button was pressed.
- *
- *  @ingroup input
- */
-#define PRESS                  1
- /*! @brief The key was held down until it repeated.
-  *
-  *  The key was held down until it repeated.
-  *
-  *  @ingroup input
-  */
-#define REPEAT                 2
+	template <typename Enumeration>
+	auto AsInt(Enumeration const value)
+	{
+		return static_cast<typename std::underlying_type<Enumeration>::type>(value);
+	}
+}

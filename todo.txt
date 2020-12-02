@@ -1,7 +1,7 @@
 -camera
-	-glm
+	-glm				ok
 	-input polling
-		-keyboard events
+-keyboard events			don't need these for input polling after all
 -imgui
 -model loading
 	-assimp

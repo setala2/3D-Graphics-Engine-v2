@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"
+#include "Keycodes.h"
 
 namespace as3d
 {
@@ -22,16 +23,15 @@ namespace as3d
 	class MouseButtonEvent : public Event
 	{
 	public:
-		MouseButtonEvent(int32_t button, int32_t action, int32_t modifiers);
+		MouseButtonEvent(Mousecode button, Action action);
 
 		EVENT_TYPE(MouseButtonEvent);
 
 		virtual std::string ToString() const override;
 
 	private:
-		int32_t button;
-		int32_t action;
-		int32_t modifiers;
+		Mousecode button;
+		Action action;
 	};
 
 	class MouseScrollEvent : public Event

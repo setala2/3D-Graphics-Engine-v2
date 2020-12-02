@@ -114,7 +114,7 @@ namespace as3d
 		glfwSetMouseButtonCallback(glfwPointer, [](GLFWwindow* window, int button, int action, int modifiers)
 		{
 			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
-			MouseButtonEvent event(button, action, modifiers);
+			MouseButtonEvent event(static_cast<Mousecode>(button), static_cast<Action>(action));
 			props.EventCallback(event);
 		});
 

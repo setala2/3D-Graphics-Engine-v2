@@ -122,6 +122,7 @@
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\FileReader.h" />
     <ClInclude Include="src\Gldebug.h" />
+    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Keycodes.h" />
     <ClInclude Include="src\MouseEvent.h" />
     <ClInclude Include="src\pch.h" />

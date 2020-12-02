@@ -14,8 +14,8 @@ namespace as3d
 		return ss.str();
 	}
 
-	MouseButtonEvent::MouseButtonEvent(int32_t button, int32_t action, int32_t modifiers)
-		: button(button), action(action), modifiers(modifiers)
+	MouseButtonEvent::MouseButtonEvent(Mousecode button, Action action)
+		: button(button), action(action)
 	{	}
 
 	// For testing and debugging
@@ -23,8 +23,8 @@ namespace as3d
 	{
 		std::stringstream ss;
 		ss << "Mouse button event:\n" <<
-			"Button " << button << '\n' <<
-			"Action " << action;
+			"Button " << AsInt(button) << '\n' <<
+			"Action " << AsInt(action);
 		return ss.str();
 	}
 
