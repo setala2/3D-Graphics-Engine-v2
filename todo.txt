@@ -1,0 +1,10 @@
+-camera
+	-glm
+	-input polling
+		-keyboard events
+-imgui
+-model loading
+	-assimp
+	-index buffers (probably)
+-materials
+	-textures
