@@ -8,16 +8,16 @@ namespace as3d
 	class MouseMoveEvent : public Event
 	{
 	public:
-		MouseMoveEvent(double x, double y);
+		MouseMoveEvent(float x, float y);
 
 		EVENT_TYPE(MouseMoveEvent);
 
-		double GetX() const { return x; }
-		double GetY() const { return y; }
+		float GetX() const { return x; }
+		float GetY() const { return y; }
 		virtual std::string ToString() const override;
 
 	private:
-		double x, y;
+		float x, y;
 	};
 
 	class MouseButtonEvent : public Event
@@ -27,6 +27,8 @@ namespace as3d
 
 		EVENT_TYPE(MouseButtonEvent);
 
+		Mousecode GetButton() { return button; }
+		Action GetAction() { return action; }
 		virtual std::string ToString() const override;
 
 	private:
@@ -37,15 +39,15 @@ namespace as3d
 	class MouseScrollEvent : public Event
 	{
 	public:
-		MouseScrollEvent(double x, double y);
+		MouseScrollEvent(float x, float y);
 
 		EVENT_TYPE(MouseScrollEvent);
 
-		double GetXOffset() const { return xOffset; }
-		double GetYOffset() const { return yOffset; }
+		float GetXOffset() const { return xOffset; }
+		float GetYOffset() const { return yOffset; }
 		virtual std::string ToString() const override;
 
 	private:
-		double xOffset, yOffset;
+		float xOffset, yOffset;
 	};
 }

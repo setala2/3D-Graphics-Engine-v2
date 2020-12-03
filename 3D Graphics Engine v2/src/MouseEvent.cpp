@@ -3,7 +3,7 @@
 
 namespace as3d
 {
-	MouseMoveEvent::MouseMoveEvent(double x, double y)
+	MouseMoveEvent::MouseMoveEvent(float x, float y)
 		:x(x), y(y)
 	{	}
 
@@ -28,7 +28,7 @@ namespace as3d
 		return ss.str();
 	}
 
-	MouseScrollEvent::MouseScrollEvent(double x, double y)
+	MouseScrollEvent::MouseScrollEvent(float x, float y)
 		:xOffset(x), yOffset(y)
 	{	}
 

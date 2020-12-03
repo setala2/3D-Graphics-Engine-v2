@@ -102,6 +102,8 @@
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\Gldebug.cpp" />
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\KeyEvent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MouseEvent.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -124,6 +126,7 @@
     <ClInclude Include="src\Gldebug.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Keycodes.h" />
+    <ClInclude Include="src\KeyEvent.h" />
     <ClInclude Include="src\MouseEvent.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Renderer.h" />

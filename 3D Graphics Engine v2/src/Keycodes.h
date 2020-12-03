@@ -9,9 +9,6 @@ namespace as3d
 	/////////////////////////////////////////////
 	enum class Keycode
 	{
-		/* The unknown key */
-		Unknown = -1,
-
 		/* Printable keys */
 		Space = 32,
 		Apostrophe = 39,  /* ' */

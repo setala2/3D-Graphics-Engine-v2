@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "ApplicationEvent.h"
 #include "MouseEvent.h"
+#include "KeyEvent.h"
 
 #ifdef WINDOWLIB_GLFW
 #include <GLFW/glfw3.h>
@@ -107,7 +108,7 @@ namespace as3d
 		glfwSetCursorPosCallback(glfwPointer, [](GLFWwindow* window, double x, double y)
 		{
 			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
-			MouseMoveEvent event(x, y);
+			MouseMoveEvent event(static_cast<float>(x), static_cast<float>(y));
 			props.EventCallback(event);
 		});
 
@@ -121,7 +122,14 @@ namespace as3d
 		glfwSetScrollCallback(glfwPointer, [](GLFWwindow* window, double xoffset, double yoffset)
 		{
 			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
-			MouseScrollEvent event(xoffset, yoffset);
+			MouseScrollEvent event(static_cast<float>(xoffset), static_cast<float>(yoffset));
+			props.EventCallback(event);
+		});
+
+		glfwSetKeyCallback(glfwPointer, [](GLFWwindow* window, int key, int scancode, int action, int modifiers)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			KeyEvent event(static_cast<Keycode>(key), static_cast<Action>(action));
 			props.EventCallback(event);
 		});
 	}

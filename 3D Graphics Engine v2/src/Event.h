@@ -11,14 +11,14 @@ namespace as3d
 {
 	enum class EventType
 	{
-		WindowCloseEvent, WindowResizeEvent, MouseMoveEvent, MouseButtonEvent, MouseScrollEvent
+		WindowCloseEvent, WindowResizeEvent, MouseMoveEvent, MouseButtonEvent, MouseScrollEvent, KeyEvent
 	};
 
 	class Event
 	{
 	public:
 		virtual ~Event() {};
-		bool handled;
+		bool handled = false;
 
 		virtual EventType GetType() const = 0;
 		virtual const char* GetName() const = 0;

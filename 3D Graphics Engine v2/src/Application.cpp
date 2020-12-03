@@ -3,6 +3,7 @@
 #include "Gldebug.h"
 #include "VertexArray.h"
 #include "Shader.h"
+#include "Input.h"
 
 namespace as3d
 {
@@ -48,6 +49,8 @@ namespace as3d
 
 		while (running)
 		{
+			// std::cout << "Space: " << input.IsKeyDown(Keycode::Space) << '\n';
+
 			renderer.Clear();
 			vao.Bind();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -68,10 +71,11 @@ namespace as3d
 		case EventType::WindowResizeEvent: OnWindowResize(event); break;
 		}
 
-		// We'll eventually call the OnEvent-method of other objects here
-
-		// For now, we'll be tracing any implemented events for debugging
-		std::cout << event << '\n';
+		// We'll eventually need to get some kind of a container to loop through any objects that listen to events
+		if (!event.handled)
+		{
+			input.OnEvent(event);
+		}
 	}
 
 	void Application::OnWindowClose(Event& event)
