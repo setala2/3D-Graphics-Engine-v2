@@ -16,6 +16,9 @@ namespace as3d
 		window->MakeCurrent();
 		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
 
+		glm::mat4 projectionMatrix = glm::perspective(Camera::defaultFOV, window->GetAspectRatio(), 0.1f, 100.0f);
+		camera = std::make_unique<Camera>(projectionMatrix, input);
+
 		if (glewInit() != GLEW_OK)
 		{
 			std::cerr << "glewInit failed!\n";
@@ -31,6 +34,10 @@ namespace as3d
 
 	void Application::Run()
 	{
+		////////////////////////////////////////////////////////////////////////////////////////
+		//	There will be a lot of stuff here before I figure out a better way to organize it
+		////////////////////////////////////////////////////////////////////////////////////////
+
 		float test[]
 		{
 			-0.75f, -0.5f, 1.0f, 0.0f, 0.0f,
@@ -48,19 +55,20 @@ namespace as3d
 		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
 		shader.Bind();
 
-		glm::mat4 projectionMatrix = glm::perspective(glm::radians(75.0f), static_cast<float>(window->GetWidth()) / static_cast<float>(window->GetHeight()), 0.1f, 100.0f);
-		shader.SetMatrix4("projectionMatrix", projectionMatrix);
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 
 		while (running)
 		{
-			// std::cout << "Space: " << input.IsKeyDown(Keycode::Space) << '\n';
+			shader.SetMatrix4("viewMatrix", camera->GetViewMatrix());
+			shader.SetMatrix4("projectionMatrix", camera->GetProjectionMatrix());
 
 			renderer.Clear();
 			vao.Bind();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
+
+			camera->OnUpdate(1.0f);
 		}
 	}
 
@@ -92,6 +100,8 @@ namespace as3d
 
 	void Application::OnWindowResize(Event& event)
 	{
+		camera->SetProjectionMatrix(glm::perspective(Camera::defaultFOV, window->GetAspectRatio(), 0.1f, 100.0f));
+		renderer.SetViewPort(window->GetWidth(), window->GetHeight());
 		event.handled = true;
 	}
 

@@ -117,6 +117,11 @@ namespace as3d
 		EnableBlending(!blend);
 	}
 
+	void Renderer::SetViewPort(int32_t width, int32_t height)
+	{
+		glViewport(0, 0, width, height);
+	}
+
 	void Renderer::SetFlag(GLbitfield flag, bool set)
 	{
 		if (set)

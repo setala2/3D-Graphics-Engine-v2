@@ -31,6 +31,7 @@ namespace as3d
 
 		int32_t GetWidth();
 		int32_t GetHeight();
+		float GetAspectRatio();
 
 		void MakeCurrent();
 		void Update();

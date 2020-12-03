@@ -6,6 +6,7 @@
 #include "Event.h"
 #include "Renderer.h"
 #include "Input.h"
+#include "Camera.h"
 
 int main(int argc, char** argv);
 
@@ -29,6 +30,7 @@ namespace as3d
 	private:
 		bool running = true;
 		std::unique_ptr<Window> window;
+		std::unique_ptr<Camera> camera;
 		Input input;
 		Renderer renderer;
 

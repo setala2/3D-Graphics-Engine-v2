@@ -19,6 +19,7 @@ namespace as3d
 
 		int32_t GetWidth();
 		int32_t GetHeight();
+		float GetAspectRatio();
 
 		void MakeCurrent();
 		void Update();
@@ -76,6 +77,11 @@ namespace as3d
 	int32_t Window::Impl::GetHeight()
 	{
 		return properties.height;
+	}
+
+	float Window::Impl::GetAspectRatio()
+	{
+		return static_cast<float>(GetWidth()) / static_cast<float>(GetHeight());
 	}
 
 	void Window::Impl::MakeCurrent()
@@ -166,6 +172,11 @@ namespace as3d
 	int32_t Window::GetHeight()
 	{
 		return pImpl->GetHeight();
+	}
+
+	float Window::GetAspectRatio()
+	{
+		return pImpl->GetAspectRatio();
 	}
 
 	void Window::MakeCurrent()
