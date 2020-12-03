@@ -5,6 +5,9 @@
 #include "Shader.h"
 #include "Input.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace as3d
 {
 	Application::Application()
@@ -44,6 +47,9 @@ namespace as3d
 
 		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
 		shader.Bind();
+
+		glm::mat4 projectionMatrix = glm::perspective(glm::radians(75.0f), static_cast<float>(window->GetWidth()) / static_cast<float>(window->GetHeight()), 0.1f, 100.0f);
+		shader.SetMatrix4("projectionMatrix", projectionMatrix);
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 

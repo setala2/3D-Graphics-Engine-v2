@@ -17,6 +17,9 @@ namespace as3d
 		Impl(const WindowProperties& props);
 		~Impl();
 
+		int32_t GetWidth();
+		int32_t GetHeight();
+
 		void MakeCurrent();
 		void Update();
 
@@ -63,6 +66,16 @@ namespace as3d
 	{
 		if (--windowCount == 0)
 			glfwTerminate();
+	}
+
+	int32_t Window::Impl::GetWidth()
+	{
+		return properties.width;
+	}
+
+	int32_t Window::Impl::GetHeight()
+	{
+		return properties.height;
 	}
 
 	void Window::Impl::MakeCurrent()
@@ -143,6 +156,16 @@ namespace as3d
 
 	Window::~Window()
 	{
+	}
+
+	int32_t Window::GetWidth()
+	{
+		return pImpl->GetWidth();
+	}
+
+	int32_t Window::GetHeight()
+	{
+		return pImpl->GetHeight();
 	}
 
 	void Window::MakeCurrent()

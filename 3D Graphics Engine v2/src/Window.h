@@ -29,6 +29,9 @@ namespace as3d
 		Window(const Window&) = delete;
 		Window& operator=(const Window&) = delete;
 
+		int32_t GetWidth();
+		int32_t GetHeight();
+
 		void MakeCurrent();
 		void Update();
 

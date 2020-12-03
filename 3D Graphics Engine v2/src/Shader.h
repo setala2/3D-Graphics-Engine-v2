@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <glm/glm.hpp>
 
 namespace as3d
 {
@@ -20,9 +21,9 @@ namespace as3d
 			Uniform methods
 		*/
 
-		// void SetInt32(const std::string& uniformName, int32_t value) const;
-		// void SetVector3(const std::string& uniformName, const glm::vec3& value) const;
-		// void SetMatrix4(const std::string& uniformName, const glm::mat4& value) const;
+		void SetInt32(const std::string& uniformName, int32_t value) const;
+		void SetVector3(const std::string& uniformName, const glm::vec3& value) const;
+		void SetMatrix4(const std::string& uniformName, const glm::mat4& value) const;
 
 	private:
 		void Compile(const char* vertexFile, const char* fragmentFile);

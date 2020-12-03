@@ -24,7 +24,7 @@ namespace as3d
 		glUseProgram(0);
 	}
 
-	/*void Shader::SetInt32(const std::string& uniformName, int32_t value) const
+	void Shader::SetInt32(const std::string& uniformName, int32_t value) const
 	{
 		glUniform1i(GetUniformLocation(uniformName), value);
 	}
@@ -37,7 +37,7 @@ namespace as3d
 	void Shader::SetMatrix4(const std::string& uniformName, const glm::mat4& value) const
 	{
 		glUniformMatrix4fv(GetUniformLocation(uniformName), 1, GL_FALSE, &(value[0][0]));
-	}*/
+	}
 
 	void Shader::Compile(const char* vertexFile, const char* fragmentFile)
 	{
