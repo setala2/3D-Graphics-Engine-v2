@@ -27,7 +27,7 @@ namespace as3d
 
 		glm::vec3 position;
 
-		float movementSpeed = 0.01f;
+		float movementSpeed = 3.0f;
 		const Input& input;
 
 	private:

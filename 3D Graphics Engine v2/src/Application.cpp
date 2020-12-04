@@ -58,8 +58,12 @@ namespace as3d
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 
+		lastFrameTime = timer.GetTime();
+
 		while (running)
 		{
+			float deltaTime = timer.GetTime() - lastFrameTime;
+
 			shader.SetMatrix4("viewMatrix", camera->GetViewMatrix());
 			shader.SetMatrix4("projectionMatrix", camera->GetProjectionMatrix());
 
@@ -68,7 +72,9 @@ namespace as3d
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
 
-			camera->OnUpdate(1.0f);
+			camera->OnUpdate(deltaTime);
+
+			lastFrameTime = timer.GetTime();
 		}
 	}
 
