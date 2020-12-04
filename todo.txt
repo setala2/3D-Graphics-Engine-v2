@@ -1,4 +1,4 @@
--camera
+-camera					ok, at least for now
 	-glm				ok
 	-input polling			ok
 		-keyboard events	ok

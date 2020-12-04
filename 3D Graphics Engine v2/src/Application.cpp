@@ -40,13 +40,39 @@ namespace as3d
 
 		float test[]
 		{
-			-0.75f, -0.5f, 1.0f, 0.0f, 0.0f,
-			0.75f, -0.5f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.75f, 0.0f, 0.0f, 1.0f
+			0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,	// bottom left front	0	blue
+			1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f,	// bottom right front	1	magenta
+			1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,	// top right front		2	white
+			0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f,	// top left front		3	cyan
+			0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,	// bottom left back		4	black
+			1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,	// bottom right back	5	red
+			1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,	// top right back		6	yellow
+			0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,	// top left back		7	green
+		};
+
+		uint32_t testIndices[]
+		{
+			0,1,2,	// front face
+			2,3,0,
+
+			4,0,3,	// left face
+			3,4,7,
+
+			3,2,6,	// top face
+			6,3,7,
+
+			1,5,6,	// right face
+			6,1,2,
+
+			4,5,1,	// bottom face
+			1,4,0,
+
+			7,6,5,	// back face
+			5,7,4
 		};
 		
 		BufferLayout layout;
-		layout.Push<float>(2);
+		layout.Push<float>(3);
 		layout.Push<float>(3);
 		VertexBuffer vbo(test, sizeof(test));
 		VertexArray vao;
@@ -55,10 +81,17 @@ namespace as3d
 		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
 		shader.Bind();
 
+		uint32_t ibo;
+		glGenBuffers(1, &ibo);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(testIndices), testIndices, GL_STATIC_DRAW);
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 
 		lastFrameTime = timer.GetTime();
+
+		renderer.EnableBackFaceCulling(false);
+		renderer.EnableDepthTesting(true);
 
 		while (running)
 		{
@@ -69,7 +102,9 @@ namespace as3d
 
 			renderer.Clear();
 			vao.Bind();
-			glDrawArrays(GL_TRIANGLES, 0, 3);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+			glDrawElements(GL_TRIANGLES, sizeof(testIndices)/sizeof(uint32_t), GL_UNSIGNED_INT, (void*)0);
+			//glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
 
 			camera->OnUpdate(deltaTime);
