@@ -40,14 +40,14 @@ namespace as3d
 
 		float test[]
 		{
-			0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,	// bottom left front	0	blue
-			1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f,	// bottom right front	1	magenta
-			1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,	// top right front		2	white
-			0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f,	// top left front		3	cyan
-			0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,	// bottom left back		4	black
-			1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,	// bottom right back	5	red
-			1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,	// top right back		6	yellow
-			0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,	// top left back		7	green
+			-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f,	// bottom left front	0	blue
+			1.0f, -1.0f, 1.0f, 1.0f, 0.0f, 1.0f,	// bottom right front	1	magenta
+			1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,		// top right front		2	white
+			-1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f,	// top left front		3	cyan
+			-1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,	// bottom left back		4	black
+			1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 0.0f,	// bottom right back	5	red
+			1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 0.0f,	// top right back		6	yellow
+			-1.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,	// top left back		7	green
 		};
 
 		uint32_t testIndices[]
@@ -56,19 +56,19 @@ namespace as3d
 			2,3,0,
 
 			4,0,3,	// left face
-			3,4,7,
+			3,7,4,
 
 			3,2,6,	// top face
-			6,3,7,
+			6,7,3,
 
 			1,5,6,	// right face
-			6,1,2,
+			6,2,1,
 
 			4,5,1,	// bottom face
-			1,4,0,
+			1,0,4,
 
-			7,6,5,	// back face
-			5,7,4
+			5,4,7,	// back face
+			7,6,5
 		};
 		
 		BufferLayout layout;
@@ -90,7 +90,7 @@ namespace as3d
 
 		lastFrameTime = timer.GetTime();
 
-		renderer.EnableBackFaceCulling(false);
+		renderer.EnableBackFaceCulling(true);
 		renderer.EnableDepthTesting(true);
 
 		while (running)
@@ -104,7 +104,6 @@ namespace as3d
 			vao.Bind();
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 			glDrawElements(GL_TRIANGLES, sizeof(testIndices)/sizeof(uint32_t), GL_UNSIGNED_INT, (void*)0);
-			//glDrawArrays(GL_TRIANGLES, 0, 3);
 			window->Update();
 
 			camera->OnUpdate(deltaTime);

@@ -11,8 +11,8 @@ namespace as3d
 	struct WindowProperties
 	{
 		// Using signed ints here since glfw size callback uses them as well
-		int32_t width = 720;
-		int32_t height = 480;
+		int32_t width = 1280;
+		int32_t height = 720;
 
 		std::string title = "Graphics Engine v2";
 		std::function<void(Event&)> EventCallback;
