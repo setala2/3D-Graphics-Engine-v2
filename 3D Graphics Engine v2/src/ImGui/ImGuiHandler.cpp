@@ -75,6 +75,7 @@ namespace as3d
 		case EventType::MouseScrollEvent: OnMouseScrollEvent(static_cast<MouseScrollEvent&>(event)); break;
 		case EventType::MouseMoveEvent: OnMouseMoveEvent(static_cast<MouseMoveEvent&>(event)); break;
 		case EventType::KeyEvent: OnKeyEvent(static_cast<KeyEvent&>(event)); break;
+		case EventType::CharEvent: OnCharEvent(static_cast<CharEvent&>(event)); break;
 		}
 	}
 
@@ -107,6 +108,12 @@ namespace as3d
 			io.KeysDown[AsInt(event.GetKey())] = true;
 		else
 			io.KeysDown[AsInt(event.GetKey())] = false;
+	}
+
+	void ImGuiHandler::OnCharEvent(CharEvent& event)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.AddInputCharacter(event.GetCodePoint());
 	}
 
 	uint8_t ImGuiHandler::refCount = 0;

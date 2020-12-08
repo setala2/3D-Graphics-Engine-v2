@@ -14,4 +14,15 @@ namespace as3d
 			"Action " << AsInt(action);
 		return ss.str();
 	}
+
+	CharEvent::CharEvent(uint32_t codePoint)
+		:codePoint(codePoint)
+	{	}
+
+	std::string CharEvent::ToString() const
+	{
+		std::stringstream ss;
+		ss << "Char event: " << codePoint;
+		return ss.str();
+	}
 }

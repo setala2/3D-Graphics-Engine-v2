@@ -28,5 +28,6 @@ namespace as3d
 		void OnMouseScrollEvent(MouseScrollEvent& event);
 		void OnMouseMoveEvent(MouseMoveEvent& event);
 		void OnKeyEvent(KeyEvent& event);
+		void OnCharEvent(CharEvent& event);
 	};
 }

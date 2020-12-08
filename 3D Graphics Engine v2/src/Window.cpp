@@ -151,6 +151,13 @@ namespace as3d
 			KeyEvent event(static_cast<Keycode>(key), static_cast<Action>(action));
 			props.EventCallback(event);
 		});
+
+		glfwSetCharCallback(glfwPointer, [](GLFWwindow* window, uint32_t codePoint)
+		{
+			WindowProperties& props = *(WindowProperties*)glfwGetWindowUserPointer(window);
+			CharEvent event(codePoint);
+			props.EventCallback(event);
+		});
 	}
 
 #endif

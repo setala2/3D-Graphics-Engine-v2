@@ -7,6 +7,15 @@
 -imgui
 	-library			ok
 	-events
+		-mouse			ok
+		-keyboard
+			-press		ok
+			-release	ok
+			-type		ok
+			(Text input)
+			-blocking	
+			(We need to stop key events that are intended from imgui going to the input class)
+		-window resize
 -model loading
 	-assimp
 	-index buffers			ok
