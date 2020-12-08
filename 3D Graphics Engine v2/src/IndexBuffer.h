@@ -16,9 +16,11 @@ namespace as3d
 		void Bind() const;
 		void Unbind() const;
 
-		// glDrawElements takes a signed int as the count for whatever reason, so we are going to give it what it wants
+		// glDrawElements takes a signed int as the count for whatever reason, so we are going to give it what it wants.
+		// (Actually https://www.khronos.org/opengl/wiki/OpenGL_Type defines GLsizei as
+		// a non negative 32-bit integer, but in glew.h it's a typedef of int.)
 		int GetCount() const;
-		unsigned int GetType() const;
+		uint32_t GetType() const;
 
 	private:
 		uint32_t handle;

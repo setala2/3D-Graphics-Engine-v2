@@ -32,7 +32,7 @@ namespace as3d
 		return count;
 	}
 
-	unsigned int IndexBuffer::GetType() const
+	uint32_t IndexBuffer::GetType() const
 	{
 		return GL_UNSIGNED_INT;
 	}
