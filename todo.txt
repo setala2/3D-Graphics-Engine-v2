@@ -5,6 +5,8 @@
 		(We'll use our event system to decouple the input from glfw and the window object)
 	-shader uniforms		ok for now, but need to implement more uniform types later
 -imgui
+	-library			ok
+	-events
 -model loading
 	-assimp
 	-index buffers			ok
