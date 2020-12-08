@@ -17,9 +17,9 @@ namespace as3d
 		Impl(const WindowProperties& props);
 		~Impl();
 
-		int32_t GetWidth();
-		int32_t GetHeight();
-		float GetAspectRatio();
+		int32_t GetWidth() const;
+		int32_t GetHeight() const;
+		float GetAspectRatio() const;
 
 		void MakeCurrent();
 		void Update();
@@ -69,17 +69,17 @@ namespace as3d
 			glfwTerminate();
 	}
 
-	int32_t Window::Impl::GetWidth()
+	int32_t Window::Impl::GetWidth() const
 	{
 		return properties.width;
 	}
 
-	int32_t Window::Impl::GetHeight()
+	int32_t Window::Impl::GetHeight() const
 	{
 		return properties.height;
 	}
 
-	float Window::Impl::GetAspectRatio()
+	float Window::Impl::GetAspectRatio() const
 	{
 		return static_cast<float>(GetWidth()) / static_cast<float>(GetHeight());
 	}
@@ -164,17 +164,17 @@ namespace as3d
 	{
 	}
 
-	int32_t Window::GetWidth()
+	int32_t Window::GetWidth() const
 	{
 		return pImpl->GetWidth();
 	}
 
-	int32_t Window::GetHeight()
+	int32_t Window::GetHeight() const
 	{
 		return pImpl->GetHeight();
 	}
 
-	float Window::GetAspectRatio()
+	float Window::GetAspectRatio() const
 	{
 		return pImpl->GetAspectRatio();
 	}

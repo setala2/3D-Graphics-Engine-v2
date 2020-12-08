@@ -5,8 +5,6 @@
 #include "Shader.h"
 #include "Input.h"
 #include "IndexBuffer.h"
-#include "ImGui/imgui_impl_opengl3.h"
-#include "imgui.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -21,6 +19,8 @@ namespace as3d
 
 		glm::mat4 projectionMatrix = glm::perspective(Camera::defaultFOV, window->GetAspectRatio(), 0.1f, 100.0f);
 		camera = std::make_unique<Camera>(projectionMatrix, input);
+
+		imgui = std::make_unique<ImGuiHandler>(window.get());
 
 		if (glewInit() != GLEW_OK)
 		{
@@ -91,21 +91,6 @@ namespace as3d
 		renderer.EnableBackFaceCulling(true);
 		renderer.EnableDepthTesting(true);
 
-
-		IMGUI_CHECKVERSION();
-		ImGui::CreateContext();
-		ImGuiIO& io = ImGui::GetIO();
-		ImGui::StyleColorsDark();
-
-		io.DisplaySize = ImVec2(window->GetWidth(), window->GetHeight());
-
-
-
-		ImGui_ImplOpenGL3_Init("#version 430");
-
-
-
-
 		lastFrameTime = timer.GetTime();
 
 		while (running)
@@ -120,27 +105,20 @@ namespace as3d
 			ibo.Bind();
 			glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
 
-
-			ImGui_ImplOpenGL3_NewFrame();
-			ImGui::NewFrame();
+			// ImGui render
+			imgui->BeginFrame();
 
 			static bool demo = true;
 			ImGui::ShowDemoWindow(&demo);
 
-
-			ImGui::Render();
-			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+			imgui->EndFrame();
 
 			window->Update();
-
 			camera->OnUpdate(deltaTime);
 
 			lastFrameTime = timer.GetTime();
 		}
 
-		ImGui_ImplOpenGL3_Shutdown();
-		ImGui::DestroyContext();
 	}
 
 	void Application::Close()
@@ -160,6 +138,7 @@ namespace as3d
 		if (!event.handled)
 		{
 			input.OnEvent(event);
+			imgui->OnEvent(event);
 		}
 	}
 

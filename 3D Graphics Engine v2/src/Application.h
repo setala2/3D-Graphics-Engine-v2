@@ -8,6 +8,7 @@
 #include "Input.h"
 #include "Camera.h"
 #include "Timer.h"
+#include "ImGui/ImGuiHandler.h"
 
 int main(int argc, char** argv);
 
@@ -32,6 +33,7 @@ namespace as3d
 		bool running = true;
 		std::unique_ptr<Window> window;
 		std::unique_ptr<Camera> camera;
+		std::unique_ptr<ImGuiHandler> imgui;
 		Timer timer;
 		Input input;
 		Renderer renderer;
