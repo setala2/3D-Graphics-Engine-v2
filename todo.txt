@@ -4,18 +4,20 @@
 		-keyboard events	ok
 		(We'll use our event system to decouple the input from glfw and the window object)
 	-shader uniforms		ok for now, but need to implement more uniform types later
--imgui
+-imgui					ok
 	-library			ok
-	-events
+	-events				ok
 		-mouse			ok
-		-keyboard
+		-keyboard		ok
 			-press		ok
 			-release	ok
 			-type		ok
 			(Text input)
-			-blocking	
+
+			-blocking	ok
 			(We need to stop key events that are intended from imgui going to the input class)
-		-window resize
+
+		-window resize		ok
 -model loading
 	-assimp
 	-index buffers			ok
