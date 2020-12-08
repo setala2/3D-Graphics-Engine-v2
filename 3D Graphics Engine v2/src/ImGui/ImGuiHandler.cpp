@@ -79,20 +79,6 @@ namespace as3d
 		case EventType::WindowResizeEvent: OnWindowResize(static_cast<WindowResizeEvent&>(event)); break;
 		}
 
-		// Mark the events as handled, if necessary
-		ImGuiIO& io = ImGui::GetIO();
-		switch (event.GetType())
-		{
-		case EventType::MouseButtonEvent:
-		case EventType::MouseScrollEvent:
-		case EventType::MouseMoveEvent:
-			event.handled = io.WantCaptureMouse;
-			break;
-		case EventType::CharEvent:
-		case EventType::KeyEvent:
-			event.handled = io.WantCaptureKeyboard;
-			break;
-		}
 	}
 
 	void ImGuiHandler::OnMouseButtonEvent(MouseButtonEvent& event)
@@ -102,6 +88,8 @@ namespace as3d
 			io.MouseDown[AsInt(event.GetButton())] = true;
 		else
 			io.MouseDown[AsInt(event.GetButton())] = false;
+
+		event.handled = io.WantCaptureMouse;
 	}
 
 	void ImGuiHandler::OnMouseScrollEvent(MouseScrollEvent& event)
@@ -109,12 +97,16 @@ namespace as3d
 		ImGuiIO& io = ImGui::GetIO();
 		io.MouseWheel += event.GetYOffset();
 		io.MouseWheelH += event.GetXOffset();
+
+		event.handled = io.WantCaptureMouse;
 	}
 
 	void ImGuiHandler::OnMouseMoveEvent(MouseMoveEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		io.MousePos = ImVec2(event.GetX(), event.GetY());
+
+		event.handled = io.WantCaptureMouse;
 	}
 
 	void ImGuiHandler::OnKeyEvent(KeyEvent& event)
@@ -130,6 +122,8 @@ namespace as3d
 		io.KeyShift	= io.KeysDown[AsInt(Keycode::Left_shift)]	|| io.KeysDown[AsInt(Keycode::Right_shift)];
 		io.KeyAlt	= io.KeysDown[AsInt(Keycode::Left_alt)]		|| io.KeysDown[AsInt(Keycode::Right_alt)];
 		io.KeySuper = io.KeysDown[AsInt(Keycode::Left_super)]	|| io.KeysDown[AsInt(Keycode::Right_super)];
+
+		event.handled = io.WantCaptureKeyboard && event.GetAction() != Action::Release;	// Never block key release events
 	}
 
 	void ImGuiHandler::OnCharEvent(CharEvent& event)
