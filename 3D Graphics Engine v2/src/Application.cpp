@@ -108,6 +108,8 @@ namespace as3d
 			// ImGui render
 			imgui->BeginFrame();
 
+			renderer.DrawControlWindow("Rendering settigns");
+
 			static bool demo = true;
 			ImGui::ShowDemoWindow(&demo);
 
@@ -133,12 +135,12 @@ namespace as3d
 		case EventType::WindowCloseEvent: OnWindowClose(event); break;
 		case EventType::WindowResizeEvent: OnWindowResize(event); break;
 		}
-
-		// We'll eventually need to get some kind of a container to loop through any objects that listen to events
+		
+		// Don't even bother sending events forward, if they have been dealt with
 		if (!event.handled)
 		{
-			input.OnEvent(event);
 			imgui->OnEvent(event);
+			input.OnEvent(event);
 		}
 	}
 
@@ -152,7 +154,7 @@ namespace as3d
 	{
 		camera->SetProjectionMatrix(glm::perspective(Camera::defaultFOV, window->GetAspectRatio(), 0.1f, 100.0f));
 		renderer.SetViewPort(window->GetWidth(), window->GetHeight());
-		event.handled = true;
+		// We'll not mark it as handled, since ImGui is interested in window resize events as well
 	}
 
 }

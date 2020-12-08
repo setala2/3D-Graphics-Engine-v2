@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Renderer.h"
+#include "imgui.h"
 
 namespace as3d
 {
@@ -16,7 +17,6 @@ namespace as3d
 		glClear(clearFlags);
 	}
 
-	/*
 	void Renderer::DrawControlWindow(const char* title)
 	{
 		ImGui::Begin(title);
@@ -43,7 +43,6 @@ namespace as3d
 
 		ImGui::End();
 	}
-	*/
 
 	void Renderer::SetClearColor(float r, float g, float b, float a) const
 	{

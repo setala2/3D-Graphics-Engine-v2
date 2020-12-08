@@ -20,7 +20,7 @@ namespace as3d
 
 		void Clear() const;
 
-		// void DrawControlWindow(const char* title);
+		void DrawControlWindow(const char* title);
 
 		void SetClearColor(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a = 1.0f) const;
 		void EnableBackFaceCulling(bool enable);

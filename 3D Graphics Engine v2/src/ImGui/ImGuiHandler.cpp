@@ -76,6 +76,22 @@ namespace as3d
 		case EventType::MouseMoveEvent: OnMouseMoveEvent(static_cast<MouseMoveEvent&>(event)); break;
 		case EventType::KeyEvent: OnKeyEvent(static_cast<KeyEvent&>(event)); break;
 		case EventType::CharEvent: OnCharEvent(static_cast<CharEvent&>(event)); break;
+		case EventType::WindowResizeEvent: OnWindowResize(static_cast<WindowResizeEvent&>(event)); break;
+		}
+
+		// Mark the events as handled, if necessary
+		ImGuiIO& io = ImGui::GetIO();
+		switch (event.GetType())
+		{
+		case EventType::MouseButtonEvent:
+		case EventType::MouseScrollEvent:
+		case EventType::MouseMoveEvent:
+			event.handled = io.WantCaptureMouse;
+			break;
+		case EventType::CharEvent:
+		case EventType::KeyEvent:
+			event.handled = io.WantCaptureKeyboard;
+			break;
 		}
 	}
 
@@ -108,12 +124,24 @@ namespace as3d
 			io.KeysDown[AsInt(event.GetKey())] = true;
 		else
 			io.KeysDown[AsInt(event.GetKey())] = false;
+
+		// Modifiers are not reliable across systems
+		io.KeyCtrl	= io.KeysDown[AsInt(Keycode::Left_control)]	|| io.KeysDown[AsInt(Keycode::Right_control)];
+		io.KeyShift	= io.KeysDown[AsInt(Keycode::Left_shift)]	|| io.KeysDown[AsInt(Keycode::Right_shift)];
+		io.KeyAlt	= io.KeysDown[AsInt(Keycode::Left_alt)]		|| io.KeysDown[AsInt(Keycode::Right_alt)];
+		io.KeySuper = io.KeysDown[AsInt(Keycode::Left_super)]	|| io.KeysDown[AsInt(Keycode::Right_super)];
 	}
 
 	void ImGuiHandler::OnCharEvent(CharEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		io.AddInputCharacter(event.GetCodePoint());
+	}
+
+	void ImGuiHandler::OnWindowResize(WindowResizeEvent& event)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.DisplaySize = ImVec2(event.GetWidth(), event.GetHeight());
 	}
 
 	uint8_t ImGuiHandler::refCount = 0;

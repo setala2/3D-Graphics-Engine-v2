@@ -34,6 +34,8 @@ namespace as3d
 
 	void Input::OnEvent(Event& e)
 	{
+		// Don't react to input events, if they have been handled by imgui
+		if(!e.handled)
 		switch (e.GetType())
 		{
 		case EventType::KeyEvent: OnKeyEvent(static_cast<KeyEvent&>(e)); break;

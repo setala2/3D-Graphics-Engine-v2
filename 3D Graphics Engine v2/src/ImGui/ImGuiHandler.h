@@ -4,6 +4,7 @@
 #include "Event.h"
 #include "KeyEvent.h"
 #include "MouseEvent.h"
+#include "ApplicationEvent.h"
 #include "Window.h"
 
 namespace as3d
@@ -29,5 +30,6 @@ namespace as3d
 		void OnMouseMoveEvent(MouseMoveEvent& event);
 		void OnKeyEvent(KeyEvent& event);
 		void OnCharEvent(CharEvent& event);
+		void OnWindowResize(WindowResizeEvent& event);
 	};
 }
