@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3D Graphics Engine v2", "3D Graphics Engine v2\3D Graphics Engine v2.vcxproj", "{4B3B039F-2425-4DBB-A077-3315CFA0D98F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "ImGui\ImGui.vcxproj", "{D418DBD4-D3BA-4C25-98A8-B58366D44273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{4B3B039F-2425-4DBB-A077-3315CFA0D98F}.Debug|x64.Build.0 = Debug|x64
 		{4B3B039F-2425-4DBB-A077-3315CFA0D98F}.Release|x64.ActiveCfg = Release|x64
 		{4B3B039F-2425-4DBB-A077-3315CFA0D98F}.Release|x64.Build.0 = Release|x64
+		{D418DBD4-D3BA-4C25-98A8-B58366D44273}.Debug|x64.ActiveCfg = Debug|x64
+		{D418DBD4-D3BA-4C25-98A8-B58366D44273}.Debug|x64.Build.0 = Debug|x64
+		{D418DBD4-D3BA-4C25-98A8-B58366D44273}.Release|x64.ActiveCfg = Release|x64
+		{D418DBD4-D3BA-4C25-98A8-B58366D44273}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

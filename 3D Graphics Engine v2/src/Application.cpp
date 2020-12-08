@@ -5,6 +5,8 @@
 #include "Shader.h"
 #include "Input.h"
 #include "IndexBuffer.h"
+#include "ImGui/imgui_impl_opengl3.h"
+#include "imgui.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -89,6 +91,21 @@ namespace as3d
 		renderer.EnableBackFaceCulling(true);
 		renderer.EnableDepthTesting(true);
 
+
+		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
+		ImGuiIO& io = ImGui::GetIO();
+		ImGui::StyleColorsDark();
+
+		io.DisplaySize = ImVec2(window->GetWidth(), window->GetHeight());
+
+
+
+		ImGui_ImplOpenGL3_Init("#version 430");
+
+
+
+
 		lastFrameTime = timer.GetTime();
 
 		while (running)
@@ -102,12 +119,28 @@ namespace as3d
 			vao.Bind();
 			ibo.Bind();
 			glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
+
+
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui::NewFrame();
+
+			static bool demo = true;
+			ImGui::ShowDemoWindow(&demo);
+
+
+			ImGui::Render();
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
 			window->Update();
 
 			camera->OnUpdate(deltaTime);
 
 			lastFrameTime = timer.GetTime();
 		}
+
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui::DestroyContext();
 	}
 
 	void Application::Close()
