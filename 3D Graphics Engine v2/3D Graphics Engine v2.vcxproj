@@ -103,6 +103,7 @@
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\Gldebug.cpp" />
+    <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\KeyEvent.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\FileReader.h" />
     <ClInclude Include="src\Gldebug.h" />
+    <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Keycodes.h" />
     <ClInclude Include="src\KeyEvent.h" />

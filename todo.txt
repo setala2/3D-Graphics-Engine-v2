@@ -7,6 +7,6 @@
 -imgui
 -model loading
 	-assimp
-	-index buffers (probably)
+	-index buffers			ok
 -materials
 	-textures

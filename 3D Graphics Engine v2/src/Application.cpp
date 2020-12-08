@@ -4,6 +4,7 @@
 #include "VertexArray.h"
 #include "Shader.h"
 #include "Input.h"
+#include "IndexBuffer.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -81,17 +82,14 @@ namespace as3d
 		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
 		shader.Bind();
 
-		uint32_t ibo;
-		glGenBuffers(1, &ibo);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(testIndices), testIndices, GL_STATIC_DRAW);
+		IndexBuffer ibo(testIndices, sizeof(testIndices));
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 
-		lastFrameTime = timer.GetTime();
-
 		renderer.EnableBackFaceCulling(true);
 		renderer.EnableDepthTesting(true);
+
+		lastFrameTime = timer.GetTime();
 
 		while (running)
 		{
@@ -102,8 +100,8 @@ namespace as3d
 
 			renderer.Clear();
 			vao.Bind();
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-			glDrawElements(GL_TRIANGLES, sizeof(testIndices)/sizeof(uint32_t), GL_UNSIGNED_INT, (void*)0);
+			ibo.Bind();
+			glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
 			window->Update();
 
 			camera->OnUpdate(deltaTime);
