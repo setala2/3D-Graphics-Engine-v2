@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include "Input.h"
 #include "IndexBuffer.h"
+#include "Image.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -40,6 +41,8 @@ namespace as3d
 		////////////////////////////////////////////////////////////////////////////////////////
 		//	There will be a lot of stuff here before I figure out a better way to organize it
 		////////////////////////////////////////////////////////////////////////////////////////
+
+		utility::Image testImage("res/textures/test.png");
 
 		float test[]
 		{
