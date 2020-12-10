@@ -5,7 +5,7 @@
 #include "Shader.h"
 #include "Input.h"
 #include "IndexBuffer.h"
-#include "Image.h"
+#include "Model.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -41,8 +41,6 @@ namespace as3d
 		////////////////////////////////////////////////////////////////////////////////////////
 		//	There will be a lot of stuff here before I figure out a better way to organize it
 		////////////////////////////////////////////////////////////////////////////////////////
-
-		utility::Image testImage("res/textures/test.png");
 
 		float test[]
 		{
@@ -80,14 +78,15 @@ namespace as3d
 		BufferLayout layout;
 		layout.Push<float>(3);
 		layout.Push<float>(3);
-		VertexBuffer vbo(test, sizeof(test));
-		VertexArray vao;
-		vao.AddBuffer(vbo, layout);
+		auto vbo = std::make_unique<VertexBuffer>(test, sizeof(test));
+		auto vao = std::make_unique<VertexArray>();
+		vao->AddBuffer(*vbo, layout);
+		auto ibo = std::make_unique<IndexBuffer>(testIndices, sizeof(testIndices));
 
-		Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
+		Mesh testMesh(vbo, vao, ibo);	// Testing the creation and drawing of a mesh
+
+		Shader shader("res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
 		shader.Bind();
-
-		IndexBuffer ibo(testIndices, sizeof(testIndices));
 
 		renderer.SetClearColor(0.8f, 0.2f, 0.1f);
 
@@ -104,9 +103,10 @@ namespace as3d
 			shader.SetMatrix4("projectionMatrix", camera->GetProjectionMatrix());
 
 			renderer.Clear();
-			vao.Bind();
-			ibo.Bind();
-			glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
+			testMesh.Draw();
+			// vao.Bind();
+			// ibo.Bind();
+			// glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
 
 			// ImGui render
 			imgui->BeginFrame();

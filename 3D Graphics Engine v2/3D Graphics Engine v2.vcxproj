@@ -114,6 +114,7 @@
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\KeyEvent.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\MouseEvent.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

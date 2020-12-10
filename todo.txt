@@ -1,3 +1,19 @@
+-model loading
+	-assimp
+	-index buffers			ok
+-materials
+	-textures
+		-image loading		ok
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// all done
+/////////////////////////////////////////////////////////////////////////////////
+
 -camera					ok, at least for now
 	-glm				ok
 	-input polling			ok
@@ -18,8 +34,3 @@
 			(We need to stop key events that are intended from imgui going to the input class)
 
 		-window resize		ok
--model loading
-	-assimp
-	-index buffers			ok
--materials
-	-textures
