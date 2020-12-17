@@ -124,6 +124,7 @@
     </ClCompile>
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\TestModel.cpp" />
     <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\TestModel.h" />
     <ClInclude Include="src\Texture2D.h" />
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="src\VertexArray.h" />

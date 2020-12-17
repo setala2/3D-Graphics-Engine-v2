@@ -14,12 +14,12 @@ namespace as3d
 		glDeleteProgram(handle);
 	}
 
-	void Shader::Bind()
+	void Shader::Bind() const
 	{
 		glUseProgram(handle);
 	}
 
-	void Shader::Unbind()
+	void Shader::Unbind() const
 	{
 		glUseProgram(0);
 	}

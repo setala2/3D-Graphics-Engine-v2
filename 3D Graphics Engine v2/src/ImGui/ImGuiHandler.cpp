@@ -15,6 +15,13 @@ namespace as3d
 
 			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
+			/////////////////////////////////////////////////////////////////////////////////////////////
+			// Apparently the event system that we use to update imgui is slow as hell.
+			// We'll have to make the double click time longer, to be able to double click anything
+			// in imgui. This will fix it for now, but we might want to look at it in the future.
+			/////////////////////////////////////////////////////////////////////////////////////////////
+			io.MouseDoubleClickTime = 0.80f;
+
 			io.DisplaySize = ImVec2(window->GetWidth(), window->GetHeight());
 
 			io.KeyMap[ImGuiKey_Tab]			= AsInt(Keycode::Tab);

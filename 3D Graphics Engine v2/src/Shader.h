@@ -14,8 +14,8 @@ namespace as3d
 		Shader(const Shader&) = delete;
 		Shader& operator=(const Shader&) = delete;
 
-		void Bind();
-		void Unbind();
+		void Bind() const;
+		void Unbind() const;
 
 		/*
 			Uniform methods
