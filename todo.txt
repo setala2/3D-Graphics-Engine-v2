@@ -6,7 +6,7 @@
 		-image loading		ok
 
 
-
+-add the dependencies (glew,glfw) as as submodules/projects instead of having the libraries in the repo
 
 
 
