@@ -66,14 +66,12 @@ namespace as3d
 
 			renderer.Clear();
 			testModel.Draw(shader);
-			// vao.Bind();
-			// ibo.Bind();
-			// glDrawElements(GL_TRIANGLES, ibo.GetCount(), ibo.GetType(), (void*)0);
-
+			
 			// ImGui render
 			imgui->BeginFrame();
 
 			renderer.DrawControlWindow("Rendering settigns");
+			// ImGui::ShowDemoWindow(&demo);
 
 			imgui->EndFrame();
 
